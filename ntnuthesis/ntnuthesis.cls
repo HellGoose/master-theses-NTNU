@@ -465,7 +465,8 @@ Use $\backslash$setthesisyear\{<year>\} to set year.
   ``MACS'' Masters in Applied Computer Science,\\
   ``MIS'' Masters in Information Security,\\
   ``CIMET'' Erasmus mundus Masters in Colour Science,\\
-  ``MTDMT''  Masters in 3D Multimedia Technology
+  ``MTDMT''  Masters in 3D Multimedia Technology, \\
+  ``MIT''  Masters in Computer Science
 }
 
 \newcommand\nmt@secondpagetext{%
@@ -473,7 +474,8 @@ Use $\backslash$setthesisyear\{<year>\} to set year.
   ``MACS'' Masters in Applied Computer Science,\\
   ``MIS'' Masters i Informasjonssikkerhet,\\
   ``CIMET'' Erasmus mundus Masters in Colour Science,\\
-  ``MTDMT''  Masters in 3D MultimMTDMTedia Technology
+  ``MTDMT''  Masters in 3D MultimMTDMTedia Technology, \\
+  ``MIT''  Masters in Computer Science
 }
 
 	    
@@ -534,6 +536,7 @@ Use $\backslash$setthesisyear\{<year>\} to set year.
   \newcommand\nmt@MIS{Master of Science in Information Security}
   \newcommand\nmt@CIMET{Master In Colour science}
   \newcommand\nmt@MTDMT{Masters in 3D Multimedia Technology}
+  \newcommand\nmt@MIT{Master of Science in Computer Science}
 
 
 
@@ -586,6 +589,15 @@ Use $\backslash$setthesisyear\{<year>\} to set year.
 			}
 }
 
+\DeclareOption{MIT}{%
+  \renewcommand\nmt@DepartmentNameText{%
+    	\nmt@IDI
+			}
+  \renewcommand\nmt@DegreeNameText{%
+    	\nmt@MIT
+			}
+}
+
 \DeclareOption{MIS}{%
   \renewcommand\nmt@DepartmentNameText{%
     	\nmt@IIK
@@ -601,6 +613,15 @@ Use $\backslash$setthesisyear\{<year>\} to set year.
 			}
   \renewcommand\nmt@DegreeNameText{%
     	\nmt@MIXD
+			}
+}
+
+\DeclareOption{MACS}{%
+  \renewcommand\nmt@DepartmentNameText{%
+    	\nmt@IDI
+			}
+  \renewcommand\nmt@DegreeNameText{%
+    	\nmt@MACS
 			}
 }
 
@@ -649,7 +670,7 @@ Use $\backslash$setthesisyear\{<year>\} to set year.
 	\renewcommand\nmt@firstpagetext{%
 	   Master's Thesis\\
 		 \nmt@DegreeNameText\\
-	   30 ECTS\\
+	   60 ECTS\\
 	   \nmt@DepartmentNameText\\
 	 }
 
