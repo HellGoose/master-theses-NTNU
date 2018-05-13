@@ -1,1 +1,46 @@
 \chapter{Implementation}
+This chapter will cover the software implementation of IVR-Connection for Unity. % And maybe design? Have a place for unimplemented features and such?
+
+    \section{Main Features}
+    
+        \subsection{Match Maker}
+        Create, search and join match. The floating menu for all 3. The match maker in the background. Limited to 4KB/s by Unet. % Initial brain dump
+        
+        \subsection{Collaboration Space}
+        The space for the Immersed users to interact. It contains 4 walls, some boxes and a floor. Center piece is the whiteboard. Scaled up for immersed. % Initial brain dump
+        
+        \subsection{Drawing}
+        Palette and Pen. Activate with button. Select color. Draw on whiteboard. Optimization and network stress. Future work: Maybe make a shader for drawing. % Initial brain dump
+        
+        \subsection{User Information} % At lack of a better title. Thinking about the features related to showing user actions and gestures: hands, speech indicator, name, etc... 
+        To help with immersing the user and giving them tools for making gestures while communicating. Hands can be used for pointing and indicating different states/signals. Speech indicator draws attention to the one who is talking. % Initial brain dump
+        
+        \subsection{Hololens Spectating}
+        Lets you enter the world from a different perspective. Get an overview over the collaboration space. Can follow the gestures mediated through "user information". Place the collaboration space within your own world space. Mirrored personal whiteboard to be able to follow the whiteboard activity closely. % Initial brain dump
+        
+        \subsection{Voice}
+        Not a feature within the program itself, but only due to the lack of network capacity. Using discord together with this program and the speech indicator will give the user the intended experience. % Brain dump
+        
+    \section{Unimplemented or failed features} % Needs a better name. Contains all the things that either got left out due to time constraints and piece of code and features that were blocked by Unet, Eduroam, .Net version, etc...
+        
+        \subsection{Anchor Transfer}
+        Lets hololens share its world data to be able to represent the world equally from hololens to hololens. Anchor data usually too large to send over Unet's 4KB/s bandwidth cap. The hololens is operating on Eduroam when testing at NTNU, which limits our control over ports for sending with sockets. We tried sockets, Unet Network Messages, with and without fragmentation. % Initial brain dump
+        
+        \subsection{Image Sharing}
+        Planed feature to be able to share images from your local computer. Left out due to time restrictions. Tried using Google Drive API, it didn't work with UWP and using http was required more knowledge than we managed to acquire in a reasonable time span. Open sharing menu, click the desired image and it will spawn on the server. If time, it would have been implemented with One Drive or Imgur API using the ImageLoader.cs for asynchronous loading of the image texture. Currently works with local images stored in the app. Can be modified to work similarly to IVR-Connection for Vive, but that way of doing image sharing wasn't well received by the users. % Initial brain dump
+        
+        \subsection{Intractable Physics Objects} % Is this even relevant?
+        Down prioritized due to relevance and impact related to collaboration and learning. Though the objects could be used for ice breaking with simple intuitive games, or as last years EiT students used it: as a talking stick indicating the person currently talking. The objects can also become a distraction from the actual task at hand. % Initial brain dump
+        
+        \subsection{Offline Scene} % too small of an issue?
+        Unity have a option for its built in network manager to send you to another scene if you loose connection. The current version of IVR-Connection for Mixed Reality does not implement this due to strange bugs appearing that wasn't worth spending time trying to fix. It would let the user not have to restart the application when the connection to the host were lost. % Initial brain dump
+        
+        \subsection{In-game voice} % Move voice down here?
+        Left out due to network restrictions. Could be implemented via a standalone VOIP server connected to the application. Using a speech indicator together with discord produces somewhat the same experience. Though less plug and play. % Initial brain dump
+        
+        \subsection{Personal Whiteboard}
+        A feature that would let the users draw and write privately. For taking notes or producing something without anyone looking over your shoulder. It would let you share the content of your personal whiteboard as a shared image. % Initial brain dump
+        
+        \subsection{3D Drawing}
+        A feature that would let you draw freely in the air. Can be used to illustrate and visualize concepts in 3D space. Moving towards things that can't currently be easily done in the real world. % Initial brain dump
+        
