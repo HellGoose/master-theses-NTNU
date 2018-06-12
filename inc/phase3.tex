@@ -1,0 +1,152 @@
+\chapter{Phase 3}
+    \section{Updated Requirements} % Only write changes to requirements here. Alt title: Phase 2 Changes to Requirements.
+    For phase 3 it was necessary to update the requirements from phase 2. The updated requirements are mainly based on the interviews with the facilitators. The updated requirements are listed in this section.
+    
+        \subsection{F1 - VR Collaboration Space} % Write about changes to the requirements, and then display them. Might make a table for requirements.
+        No big changes were done to this requirement. F1.1 and F1.2 were rewritten to make more sense and be more precise, without changing the underlying meaning. The updated requirement is shown below.
+        \newline\newline
+        The user should be able to enter a collaborative space. he collaborative space should have the following features:
+        \begin{enumerate}
+            \item The space must not be too big, and at the same time it must be spacious enough to not feel cramped.
+            \item The space must function as a collaborative space and not be too fancy or captivating, as this might draw attention away from the task at hand.
+            \item The space must be easy to navigate, e.g. have objects placed about to give you a sense of depth.
+        \end{enumerate}
+        
+        \subsection{F2 - Avatar}
+        For the avatar two additional requirements were added to make a distinction between the avatar for Hololens and the avatar for immersed headsets. F2.3 describes the immersed avatar and F2.4 describes the Hololens avatar. The updated requirement is shown below.
+        \newline\newline
+        The user should have an avatar that represents him/her in the virtual space. The avatar should have the following features:
+        \begin{enumerate}
+            \item The avatar should follow the movement of the player.
+            \item There should be 2 different avatars. One for immersed headsets and one for the hololens.
+            \item The Immersed avatar should have a body, a head and two hands.
+            \item The Hololens avatar only needs a head.
+        \end{enumerate}
+        
+        \subsection{F3 - Movement}
+        No changes were made to this requirement.
+        
+        \subsection{F4 - Multiplayer}
+        For multiplayer two new requirements were added to specify the minimum requirements for the stability and capacity of a session. F4.5 describes stability and F4.6 describes capacity.
+        \newline\newline
+        The user should be able to connect to other users. The multiplayer system should contain the following features:
+        \begin{enumerate}
+            \item The user should be able to host a session from any supported device.
+            \item The user should be able to search for active sessions created by other users.
+            \item The user should be able to join an active session.
+            \item The user should be able to disconnect from the currently active session.
+            \item A session should be stable and optimized for sessions lasting 30 minutes or more.
+            \item A session should support a minimum of 4 simultaneous users.
+        \end{enumerate}
+        
+        \subsection{F5 - Drawing}
+        For drawing one new requirement were added to specify how much impact drawing can be allowed to have on the frame rate.
+        \newline\newline
+        The user should be able to communicate and visualize through drawing. The drawing should be governed by the following features:
+        \begin{enumerate}
+            \item The user should be able to draw on a surface.
+            \item The user should be able to draw in the air in 3 dimensions.
+            \item The user should be able to choose a color to draw with.
+            \item The user should be able to erase what has been drawn.
+            \item Drawing should not lower the frame rate of the application with more than 10 frames.
+        \end{enumerate}
+        
+        \subsection{F6 - Media Sharing}
+        No changes were made to this requirement.
+        
+        \subsection{F7 - Voice Chat}
+        No changes were made to this requirement.
+        
+        \subsection{F8 - Interactable Objects}
+        No changes were made to this requirement.
+        
+        \subsection{F9 - Hololens Spectating}
+        For Hololens spectating one requirement was updated and 3 were added. Requirement F9.3 were changed to reflect the new requirement F9.4. F9.4 describes the users ability to be able to scale the collaboration space. Requirements F9.5 and F9.6 describes a personal whiteboard for the Hololens spectator.
+        \newline\newline
+        The user should be able to spectate the virtual space by using a Hololens. Using the Hololens should be governed by the following features:
+        \begin{enumerate}
+            \item The user should be able to move the virtual collaborative space.
+            \item The collaborative space should be moved relative to the real world, e.g. can be place on a table or on the floor.
+            \item The starting scale of the collaborative space should appear small enough to fit on a table.
+            \item The user should be able to scale the collaborative space.
+            \item The user should have its own personal whiteboard that can be scaled and moved in the same manor as the collaborative space.
+            \item The personal whiteboard should replicate what is drawn on the whiteboard in the collaborative space.
+        \end{enumerate}
+    
+    
+    \section{Implementation} % Improving IVR-Connection for Unity. Stability, features, optimization. Based on feedback and remaining unfulfilled requirements.
+    During phase 3 improvements were made toward having a more stable and complete product based on the update requirements. This section lists the different features implemented and explains what was created and updated.
+    
+        \subsection{Collaboration Space}
+        The collaboration was scaled to fit the height of the user better. To do this the overall height of the space were brought down and the width made a little smaller. On the scripting end, LevelLogic.cs now makes sure that both the scale and position of the space is synced relative to the avatars. This ensured that every player gets the same and correct state of the world.
+        
+        \subsection{Avatar}
+        The Avatar were scaled to match the new scale of the collaboration space, and to fit better relating to the headset user and the ground. The goal of the new scale is to make it easier to feel immersed in the space. split into two different game objects. One for Hololens players and one for immersed headset players. This was to make it easier to develop individual features for the different hardware.
+        
+        The Hololens avatar is now a cloud in the sky. This was to make the spectator less intrusive to the once collaborating in the space, while at the same time being able to draw attention if needed. The cloud model were taken from Microsoft's 250 mixed reality tutorial.
+        
+        The immersed avatar now has a pair of hands in addition to the body and the head. The hands will follow the movement of the motion controllers used with the immersed headset. If no controllers are connected, the hands will be hidden. A speech indicator were also added to let the other players see when someone with an immersed headset is talking. The speech indicator consists of a red ball over the players head. The red ball will be visible when the player speaks, and hide itself otherwise.
+        
+        A name tag were added for both avatars. The name can be set in the menu before you join or create a session, and will hover above the players head. The name will help the players keep track of who's who. % Add some pictures of this.
+    
+        \subsection{Match Maker}
+        The UI of the match maker were moved closer. This was to make it easier to read the labels on the buttons. A search button were added to let the player search for matches before joining. This was added to make the application ready to handle multiple sessions at the same time. When the player search for a match, any session found will be displayed above the buttons in a list. The player can then select the session and click join to join the selected session.
+        
+        The network code were optimized to send less data per second. This was needed due to the low bandwidth limit put in place by Unity's networking service. To accomplish this all networked messages were forced to only happen a certain amount per second. Ranging from a couple to 30 times per second. This still wasn't really enough to keep within the limits. To properly fix this issue, we would need to either start paying for Unity Pro and Unity's network service, or implement another network system. None of these options were really valid. Unity Pro and its network services costs a lot of money, and implementing a new network system would have taken more time than was available. In the end we chose to move on because the application now run just long enough to do a multiplayer test.
+        
+        \subsection{Drawing}
+        Due to the network optimizations the drawing feature had to be tweaked. The drawing data that had to be synced between clients were reduced to the smallest possible type. This resulted in the color scheme for drawing now only supports 256 different colors, but for most practical purposes this should be enough to use the whiteboard effectively.
+        
+        The drawing process also had to be optimized due to limited processor power on the Hololens. To accomplish this the logic of applying draw data to the whiteboard texture were separated from the draw logic itself. Because applying data to a texture is a CPU heavy task, this allowed us to reduce the CPU load by applying data less often. With the immersed headsets this was not an issue and thus they could continue to apply data as fast as they were drawing, but for the Hololens the frequency were lowered to 10 times per second. 
+        
+        Lowering the frequency to 10 times per second, synced the drawings on the whiteboard frequently enough to effectively follow what the other players were drawing. It also reduced the load on the CPU significantly, but the spikes generated still caused low frame rates when run on the Hololens. The solution to this could be to use a shader for drawing on the whiteboard texture. A shader would move the work load from the CPU to GPU, which is much more optimized to handle such tasks. Even though this might have been a good solution, we lacked shader competence and time to learn and implement it properly. Resulting in any further optimization effort to be put on hold. In the mean time the application could be streamed from the computer to the Hololens, effectively working around the issue.
+        
+        \subsection{Hololens Spectating}
+        The scale of the world as the Hololens sees it were scaled up. This was to make it easier to follow what the immersed player where doing in the collaborations space. A bigger extra whiteboard that only the Hololens can see was also added. This whiteboard can be moved around and placed relative to the real world, just like the collaboration space. This new whiteboard replicates what is drawn on the original whiteboard. This is to make it easier for the Hololens user to see what is being drawn.
+        
+        Because of the issues with drawing and network service, the Hololens cannot effectively run the application on its own. A computer with Unity engine version 2017.2p1 and the source code from Git is needed. With Unity open you can stream the application to the Hololens while letting the computer do all the heavy lifting. At the same time the Hololens can still use gestures and gaze controls to interact with the application. Thus this work around let us test Hololens spectating without having to worry about limited hardware resources.
+    
+    \section{Evaluation} % This might get its own chapter
+    The evaluation for phase three consisted of one user test with two VR experts and a facilitator, followed up by a focus group session. In the test the VR experts were told to cooperate to complete a drawing challenge while the facilitator observed and took notes of how they cooperated. The goal of the test was for the facilitator to evaluate if using Hololens for observing cooperation in VR gives any potential advantages when trying to facilitate.
+        
+        \subsection{Focus Group Feedback}
+        % Hvem, hva og hvordan
+        The focus group consisted of 3 participants; One EiT facilitator and two VR experts. The two VR experts were both master students at NTNU, and had been working with VR for 1.5 years. Where one of them had spent a year working with the Hololens. The facilitator also participated in the focus group for phase 2, and have had half a year of experience with VR and facilitating.
+        
+        The focus group were handled as a semi structured interview with open questions that everyone could answer and discuss. The goal was to evaluate if any improvements had been made since phase 2, and how the applications stacks against IVR-Connection for Vive or collaboration in real life. Especially in relation to facilitating. The rest of this section contains a summary of what was discussed during this focus group session.
+        
+        % Tegning er bedre
+        The whole focus group agreed that the strongest feature implemented so far, was the drawing. They said that it was easy and intuitive to use, and that it was an improvement to the drawing system implemented for IVR-Connection for Vive. The only thing that they thought was confusing, was which button they had to press to activate drawing. One of the VR experts suggested that adding a controller scheme visualization could fix this issue. For the Hololens the facilitator said that it was now much easier to follow what was drawn on the whiteboard. This was mostly due to the addition of the personal larger whiteboard viewable for the Hololens user.
+        
+        % Immersion er bedre med sky og hender, er det ok å bli snakket til av en sky?
+        Both the VR experts and the facilitator said that they felt immersed in the world. They all forgot about the outside world and focused only what was happening in the application. One of the VR experts stated that the cloud in the sky were less intrusive than the old Hololens avatar, making it less distracting. The others agreed. When asked about the new hands, one of the VR experts said that it made him feel more present because he was able to wave and make other simple hand gestures. He also mentioned that this feature could be improved by implementing even better hands. For example by adding a skeleton mesh and allow the player to open and close the hand, or point with only one finger extended. The same was true for the head of the avatar.  % Maybe add statement about animating the face and connect it with social presence.
+        
+        % Enkelere å se hva folk gjør, egen tavle hjelper, speechindicator og navn gjør det enkelt.
+        The VR experts both agreed that it was easy to follow what the other were doing in the collaboration space. With the hands, speech indicator and a name tag, it was easy to grab attention when needed. They also added that they thought that the speech indicator and name tag would be especially helpful when collaborating with more people. The facilitator also agreed to all of this, but when using the Hololens the speech indicator and name tag was a little bit too small. The same issue was true for the hands. This meant that she had to move in close to clearly see who was talking and what gestures they were making. To fix this inconvenience the scale of the name tag, the speech indicator and the hands could be increased when using the Hololens.
+        
+        The facilitator stated that facilitating in MR is a lot different from facilitating in real life. She agreed that this was partially because you get less information about the subjects when you are facilitating MR, than you would if you were facilitating in real life. One of the biggest differences is the lack of advanced body language. She also added that although it is different and you get less information, it is still enough information to give feedback and facilitate cooperation. And added that it would probably most efficient if you were observing the subjects cooperate in real life and in MR.
+        
+        One thing that eased facilitating cooperation in VR, is the focus that comes with putting on a head mounted display and entering a virtual space with the sole purpose to collaborate. The facilitator meant that this makes it easier to facilitate, because almost everything that goes on in this space is related to collaboration. She also added that the Hololens comes with some advantages in relation to this phenomenon. First of all, the Hololens does not bring you, as a facilitator, completely away from the real world. This means that you can blend realities by observing the virtual space while taking notes in your notebook in the real world. There is also a certain familiarity to placing objects on a table and watching it from different angles. This makes it easy to use and gives you a lot of overview of what is happening. Which is a huge advantage for a facilitator.
+        
+        The facilitator also added that she felt that there was a lower threshold for giving feedback. The main reason for this was that she felt like a part of the virtual space when she was inhabiting the Hololens avatar. The VR experts agreed with there being a low threshold for starting a conversation, and added that the anonymity of the avatars might also be a factor to this. They all also agreed that another factor might be that they got to know each other before the test started. The facilitator added that getting to know each other might not factor in specifically on the threshold itself, but rather making everyone take each other more seriously.
+        
+        Even though the threshold for giving feedback were lower, the facilitator added that the current version of the application did not give her a way to get the immersed players' attention. With this she meant that there were no incentive for the immersed player to look her way when she was talking. One suggestion to fix this was to add a feature that allowed the Hololens spectator to move down into virtual space to get on the immersed players level. Implementing something like this could help replicate the facilitation experience, because this is exactly what the facilitators do when they want to give feedback to EiT groups in real life.
+        
+        The VR experts though that when comparing this application to collaborating in real life, you would have to look at what the application brings to the table in terms of improved or added functionality to the real life setting. In other words, for the team using the application, it needs to be at least as good as collaborating without the application. One example was that they should be able to share documents and maybe use a web browser within the application. Which both are features of talking through VOIP or being a co-located team. Another thing they brought up was the use of a whiteboard. A drawable surface, like the whiteboard, is also a feature that exists in the real world, but the one of the VR experts argued that it is a lack luster to the potentials of a virtual world. He suggested that adding features to draw on anything and draw 3D directly in the air, and that this would elevate the application to go beyond what is possible in the real world. Effectively increasing the potential benefit of using such an application for collaboration.
+        
+        % Opplæring trengs bare for funksjonene i programmet. Fasilitering bygger nok på prinsippene til IRL fasilitering.
+        The facilitator agreed that to use this application, some training would be required. She noted that using the Hololens requires some practice. Making the correct gesture with your fingers in such a way that the Hololens recognizes it, can be a challenge for new users. This barrier also affects the understanding of what the gesture does in the application, because it can be hard to tell if you did it right or not. The focus group agreed that this barrier could be mitigated by by playing through Hololens' gesture training and having a tutorial within the applications itself. One of the VR experts added that the same was true about using the Windows Mixed Reality headsets, and that having a tutorial would probably help for that case as well.
+        
+        Over all both the VR experts and the facilitator were positive to the concept and would want to see similar application in the future. They agreed that this type of application has its maximum potential when used by a team that is not co-located, but with some addition can also have value to a co-located team. Feedback from the facilitator combined with observation made during the tests has suggested that using a device like the Hololens, can have potential advantages over facilitating directly in VR or spectating with a computer screen. They thought that the application itself, if you look beyond the bugs and unstable network code, has potential to help students collaborate and facilitators facilitate using Windows Mixed Reality.
+        
+        \subsection{Requirements}
+        For phase 3 most of the requirements were fulfilled or partially fulfilled, with some exceptions. The requirements F1, F2 and F3 were completely fulfilled. The requirements F4, F5 and F9, had had a lot of progress since phase 2, but were still only partially fulfilled. While the requirements F6, F7 and F8 had had no progress since phase 2, and were thus still not fulfilled at all.
+        
+        The requirement F1 address the collaboration space and what properties this space should have to satisfy the user. This requirement were thus evaluated through user feedback. The users from the focus group all agreed that the collaboration space had a scale that made it neither too cramped nor too big, which fulfills requirement F1.1. Requirement F1.2 relates more to a finished product than the proof of concept versions, since it details the affordance that the atmosphere of the room emits. The requirement is however temporally fulfilled because the space is defiantly not too fancy or captivating. The requirement probably needs rephrasing or a new one should be added to encapsulate the intended purpose of the original requirement, making sure the space affords the task at hand. When asked about the ease of navigation relating to requirement F1.3, the VR experts said that they had no trouble navigating the collaboration space. This might not be true for users that is not as familiar with VR as they were, but the requirement was marked as temporally fulfilled, pending new data.
+        
+        The requirement F2 describes the avatar and its components and behavior. This is a technical requirement since it only relies on the existence of certain objects or features. The final evaluation of this requirement were therefor evaluated internally. The application contains two different avatars. One for immersed headset users consisting of a body, a head and two hands, and one for Hololens users consisting of only a head. This fulfills requirement F2.2, F2.3 and F2.4. Both avatars will follow the position of the user when using the application, thus F2.1 is also fulfilled. Through the focus group new angle related to defining avatars emerged. The avatars should also serve a purpose and give the correct affordance. For example, a cloud might not be the optimal model for a facilitator, because being addressed by a cloud can be distracting. For further development, more requirements should be added defining the use case the avatars should fit.
+        
+        No changes were made to the movement functionality and no changes were made to the movement requirements, thus all of F3 is still fulfilled as a result of phase 2. Features and requirements for F6, F7 and F8 also had no changes made since phase 2, thus these are still not fulfilled following phase 3.
+        
+        The requirement F4 describes multiplayer and how it should behave and perform. This another technically driven requirement since it relies on feature functioning a certain way. The final evaluation of this requirement were therefor evaluated internally. The requirements F4.1, F4.3 and F4.4 had no changes made to its related features. Therefor F4.1 and F4.3 were still fulfilled as a result of phase 2, while disconnecting could still only done by external means, leaving F4.4 unfulfilled. The requirement F4.2 was fulfilled by the addition of a search button and a corresponding server list. 
+        

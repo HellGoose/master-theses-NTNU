@@ -1,0 +1,56 @@
+\chapter{Phase 1}
+    \section{Exploration}
+    In the beginning of the first phase time was spent looking for ways to integrate Hololens into the already existing IVR-Connection application. To accomplish this, we had to look at the code of IVR-Connection and browse online for already existing solutions for Hololens in Unreal.
+    
+        \subsection{IVR-Connection}
+        IVR-Connection was developed in 2016?, and used Unreal version 14.0, in relation to VR technology and especially Windows Mixed Reality, this could be considered as an old version of Unreal Engine. This meant that IVR-Connection needed an engine version update for it to be best able to support the newest VR technology, e.g. Hololens. We were tasked by our supervisors and stakeholders to update IVR-Connection to establish a stable baseline, a 1.0 release of IVR-Connection. This baseline was to act as the new official version that every other student working on the application would use. The aim was set at Unreal Engine release 4.18, as it provide a lot of new features and support for VR technology, making it a good version for a stable baseline for a VR application. Unfortunately it had no official support for Windows Mixed Reality and Hololens.
+        
+        \com{Connect much stronger to EiT needs and learning goals!}
+        
+        \subsection{Hololens Support}
+        The best way to support Hololens, is to support UWP. Unreal engine did not natively support UWP at the time, but Microsoft were working on a branch of Unreal that did. This branch also had a sub branch called dev\_MixedReality which added support for Windows Mixed Reality. In addition there was a plugin called ProteusVR that added templates and blueprints for Hololens to this branch. ProteusVR had just reached version 1.0 and the lead developer promised to rapidly release updates as Windows' mixed reality branch evolved. The mixed reality sub branch did however not support Unreal engine 4.18 at the time. Since the priority for IVR-Connection was to support HTC Vive and be on the cutting edge of VR features, updating to Unreal engine 4.18 got prioritized over merging to the new Microsoft branch. In addition both the Microsoft branch and ProteusVR were both actively being developed. This meant that there was a chance for them both to catch up with 4.18 while we worked on the stable baseline for IVR-Connection. Thus Hololens support was set on hold until IVR-Connection 1.0 was finished.
+        
+        \subsection{VR Lab Space}
+        
+        \com{Connect this to EiT learning goals (several students in VR together!)}
+        Early January, the VR lab at NTNU Dragvoll finished construction. The lab consisted of four Vive headsets in different booths in the same room, each with its own set of base stations. The VR booths had an open design: With one of the side open and openings at the top of the walls. This caused the the base stations' infrared light to bleed into the adjacent booths. This introduced issues with the spatial tracking for some of the Vive headsets. Several solutions were applied to fix this issue: 
+        \begin{enumerate}
+            \item Configure the base station in such a way that they could only one base station with a compatible setting.
+            \item Using sync cables to ensure that the correct pair of base stations synced to each other.
+            \item Stacking pieces of cardboard along the upper wall to block the light leaking over the wall.
+            \item Putting cardboard boxes with one side open over the base stations to limit the angle that they were sending light.
+            \item Using blinds to block any light entering through an opening in the side wall of one of the booths.
+        \end{enumerate}
+        
+        The first fix was supposed to stop the base stations from syncing with the wrong base stations, this solution was not perfectly consistent however. The second fix was applied to address this issue, and this time the base stations consistently synced correctly to each other. The third fix stopped the light from leaking over the wall, effectively eliminating light leaks for some of the VR booths. Light bleeding from one booth to the other meant that the Vive headset would sometimes get confused about its spatial orientation. This had averse effects for the person wearing the headset, as the world would move around erratically, often causing nausea or dizziness. To further assure that no light was escaping over the wall, fix 4 was applied. Fix 5 had to be applied to one of the booths due to a hole in one of the side walls. With all the base stations syncing correctly and the light leaks fixed, the Vive headsets were now operating predictably. The issues experienced with having multiple Vive setups in the same room will according to HTC Vive's website be addressed with the 2.0 version of SteamVR and the 2.0 version of the base stations. % Some pictures for visualization, small, grouped side by side, in two rows if needed. Find a nice place to cite for 2.0. Best I found was the buy page, can we cite that? https://enterprise.vive.com/eu/
+ 
+    \section{Implementation} % Fixing and updating to 4.18.
+    The strategy for updating IVR-Connection to Unreal engine version 4.18 was carried out in two steps. Since 4.18 didn't get released before 23rd of October 2017, the first step was to update to 4.17. This was to be able to address as many deprecation issues as possible before 4.18 released, making the transition a little bit smoother. After 4.18 was released IVR-Connection was updated again, bringing it up to date with the newest VR features Unreal could offer. % Ref 4.18 release date blog post containing list of new features? https://www.unrealengine.com/en-US/blog/unreal-engine-4-18-released
+        
+        \subsection{Plugins}
+        There were two plugins attached to the original version of IVR-Connection: VR Expansion and that other one. VR Expansion Released updates for 4.17 and eventually 4.18, so we did not need to modify anything using this plugin. That other one one the other hand seemed to be dead, and had not released any updates in a while. We therefore removed the plugin and rewrote the blueprints that had been using it. This was done with native functions within the Unreal engine. % Find name and exact date for last version of the other plugin.
+        
+        \subsection{Image Loading}
+        The blueprints for loading and sharing images used features from the removed plugin which had no equal within the Unreal engine. Loading images had also previously proved to freeze the main thread while the image was being loaded. The solution to both these issues were finding a small piece of code that allowed for loading the images asynchronous to the main thread. % Ref code source + picture or code snippet?
+    
+    
+    \section{Evaluation} % Internal Evaluation, What made us change
+    The evaluation of phase 1 consisted of 1 survey with 26 respondents and an internal evaluation regarding Hololens and Unreal.
+    
+        \subsection{Survey} % UKA questionnaire
+        The survey were a part of a stand at UKA technology conference, were people could come and test IVR-Connection for Vive before filling it out. The goal was to get an idea of what people think about using VR for collaboration and learning, as well as to get an overview of what features the respondents deemed most important in such a scenario.
+        
+        Of the total 26 respondents, 46.2\% had tried VR a few times before while only 11.5\% had tried it many times, which leaves 42.3\% that had never tried VR before that day. Because the definition of many and a few can vary from person to person, it only makes sense to make a distinction between those who had tried VR before, and those that had not.
+        
+        The survey showed that interacting together in VR can be an exciting and engaging experience, since all respondents agreed to this. Which is reflected in their excitement about the idea of using this for collaboration and lectures in the future. In other words, the survey confirmed that the concept of IVR-Connection was worth continuing on.
+        
+        24 of the total 26 respondents said that they felt a strong or some sense of presence in the VR world, but only 11 agreed that it was easy to follow what the others were doing. When observing the respondents trying IVR-Connection, an emerging trend was that they lost track of the other users when they were teleporting. This might indicate that the application needs some features for tracking the other users location, e.g. adding spatial sounds and/or particle trails when people are teleporting.
+        
+        % TODO: avsnitt om features
+        
+        \subsection{Hololens} % Lacking Hololens support for Unreal
+        By the end of the first phase the mixed reality branch of Unreal developed by Microsoft were still stuck in 4.16, and ProteusVR had not seen any activity in 4 months. This meant that we either had to switch back to Unreal 4.16 or find another way of using Hololens for a collaborative environment.
+        
+        Switching back to 4.16 and using Microsoft's Unreal branch, could make it unnecessarily complicated for the other students working on the project. As well as limiting development when it comes to supporting the newest standards and VR hardware optimally. Thus we decided not to continue down the path to add Hololens support for IVR-Connection for Vive.
+        
+        Instead we directed our attention towards Unity. Unity offered support for the newest in VR hardware and was Microsoft's own recommended engine for developing 3D applications for Hololens and Windows Mixed Reality. To further accelerate development Microsoft had also started working on a plugin, called Holotoolkit. This tool was developed as an open source project and had a high level of activity, which meant relatively frequent updates. In addition making our own software, meant more freedom to explore in the directions we wanted. Thus we opted to take the concept of IVR-Connection and implement it with Hololens support in Unity. % https://docs.microsoft.com/en-us/windows/mixed-reality/development-overview
