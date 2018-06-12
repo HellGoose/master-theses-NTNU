@@ -1,0 +1,166 @@
+\chapter{Phase 2}
+    \section{Requirements}
+    For the second phase, requirements where elicited based on the results of the UKA questionnaire from phase 1 combined with personal experiences with collaboration in VR. This section lists these requirements.
+    
+    \com{Should be explained much better how the requirements are derived from the EiT learning goals, the need for facilitating and theory, e.g. immersion and social presence}
+    
+        \subsection{F1 - VR/MR? Collaboration Space}
+        The user should be able to enter a collaborative space. The collaborative space should have the following features:
+        \begin{enumerate}
+            \item The space must feel roomy and spacious at the same time.
+            \item The space must function as a collaborative space, e.g not be too fancy or captivating.  "supporting sense of presence?"
+            \item The space must be easy to navigate, e.g. have objects placed about to give you a sense of depth.
+        \end{enumerate}
+        
+        \subsection{F2 - Avatar}
+        The user should have an avatar that represents him/her in the virtual space. The avatar should have the following features:
+        \begin{enumerate}
+            \item The avatar should follow the movement of the player.Identity? Social presence
+            \item There should be 2 different avatars. One for immersed headsets and one for the hololens.
+        \end{enumerate}
+        
+        \subsection{F3 - Movement}
+        The user should be able to move around in the virtual space. The movement should be governed by the following features:
+        \begin{enumerate}
+            \item The user must be able to walk around in the virtual environment by walking around in the real world.
+            \item The user must be able to teleport using a controller.
+        \end{enumerate}
+        
+        \subsection{F4 - Multiplayer}
+        The user should be able to connect to other users. The multiplayer system should contain the following features:
+        \begin{enumerate}
+            \item The user should be able to host a session from any supported device.
+            \item The user should be able to search for active sessions created by other users.
+            \item The user should be able to join an active session.
+            \item The user should be able to disconnect from the currently active session.
+        \end{enumerate}
+        
+        \subsection{F5 - Drawing}
+        The user should be able to communicate and visualize through drawing. The drawing should be governed by the following features:
+        \begin{enumerate}
+            \item The user should be able to draw on a surface.
+            \item The user should be able to draw in the air in 3 dimensions.
+            \item The user should be able to choose a color to draw with.
+            \item The user should be able to erase what has been drawn.
+        \end{enumerate}
+        
+        \subsection{F6 - Media Sharing}
+        The user should be able to share media like video and images to other users. The sharing of media should be governed by the following features:
+        \begin{enumerate}
+            \item The user should be able to open a sharing menu.
+            \item From the sharing menu the user should be able to share media with the other users.
+            \item When shared, a game object representing the media should be spawned in the virtual space.
+            \item The user should be able to move the spawned game object.
+        \end{enumerate}
+        
+        \subsection{F7 - Voice Chat}
+        The user should be able to communicate by using a voice chat. The voice chat should contain the following features:
+        \begin{enumerate}
+            \item The user should be able to speak to other users using a microphone.
+            \item When a user speaks there should be an indication of it in the virtual space.
+            \item The voice chat should be activated as soon as a user hosts a session.
+        \end{enumerate}
+        
+        \subsection{F8 - Interactable Objects}
+        The user should be able to play around with physically intractable objects in the virtual space. These objects should have the following features:
+        \begin{enumerate}
+            \item The user should be able to pick up the object.
+            \item The user should be able to throw the object.
+            \item When thrown the object should maintain momentum according to the physical laws of the virtual space.
+        \end{enumerate}
+        
+        \subsection{F9 - Hololens Spectating}
+        The user should be able to spectate the virtual space by using a Hololens. Using the Hololens should be governed by the following features:
+        \begin{enumerate}
+            \item The user should be able to move the virtual collaborative space.
+            \item The collaborative space should be moved relative to the real world, e.g. can be place on a table or on the floor.
+            \item When using the Hololens the virtual space should appear small enough to fit on a table.
+        \end{enumerate}
+    
+    \section{Implementation} % Implementation of IVR-Connection in Unity. Based on requirements.
+    For the second phase not all requirements where met. Only the most essential features to complete a proof of concept test where implemented. The rest of this section will list and describe these features.
+    
+        \subsection{Collaboration Space}
+        The collaboration space is the playing area where the immersed players can move around and interact with each other and the environment. It is designed to meet requirement F1. It has some boxes placed about to make it feel less empty, and a big whiteboard where the immersed players can draw. Attached to gameobject is a LevelLogic script. It contains the logic for how the different headset types should spawn and scale the collaboration space. % Add picture. Not much more to say?
+        
+        \subsection{Avatar}
+        The avatar consists of a model with a PlayerController script attached, and was designed to meet requirement F2 and F3. The PlayerController script contains all the logic for how the player can interact with the virtual world. Due to lack of 3D modelling skills and time, the model for the avatar were taken from Microsoft's 250 Mixed Reality tutorial. The model is under the MIT licence. % Pictures and ref to the tutorial
+    
+        \subsection{Match Maker}
+        The match maker is based on Unity's match making system using UNET and HoloToolkit's example menu. The match maker contains logic for creating, searching for and joining matches and was extended to be able to transmit room data from Hololens to Hololens. The UI follows the player around and anchors around the bottom of the viewport. It only supported creating and joining matches. The join button where for testing purposes hard coded to search for matches, and then join the first match it found. The match maker was implemented to meet requirement F4. % Pictures
+        
+        \subsection{Drawing}
+        Drawing was implemented by giving the player a pen and a palette. The pen is used to draw on the whiteboard in the collaboration space. This is done by pointing the colored tip towards the whiteboard and drag it around, just like in the real world. The palette is used to change color. The player can change the color of the pen by touching the colors on the palette with the tip of the pen.  % Pictures + something about the code?
+        
+        \subsection{Hololens Spectating}
+        Joining or creating a session while using a Hololens gives you a birds eye view of the collaboration space. Upon joining or creating a session, the collaboration space will spawn relative to you and your physical environment. The player can move the collaboration space by doing a tap gesture to pick it up, and another tap gesture to place it down again. The collaboration space will align with the spatial data gathered by the Hololens. If someone with an immersed headset joins the session, they will appear in the collaboration space. The Hololens will thus be able to observe the interactions of those with the immersed headsets. Hololens spectating was implemented according to requirement F9.
+    
+    \section{Evaluation}
+    The evaluation of phase 2 consisted of one user test with 7 EiT students and 5 facilitators followed by a focus group session with 2 of the facilitators, and a survey for all 12 of them.
+    Due to some bugs in the network code, the multiplayer and cooperation aspect fell out of focus, and only the individual features where properly tested. This means that only the concept of the application and the individual features were evaluated.
+    
+    \com{5 facilitators here but 2 in the next sections? Confusing, explain the settings better, in a separate subsection!}
+    
+        \subsection{Survey} % Summary of survey data.
+        This subsection will contain a summery of the survey data.
+        % Purpose
+        
+        % VR collab and outside
+        
+        % Physical lab space
+        
+        % EiT course, not relevant?
+        
+        % Vive Application
+        
+        % Mixed Reality Application
+        
+        % Facilitators
+        
+        \subsection{Mixed Reality Application Concept} % Summary of interview. Relevant to Mixed Reality.
+        % TODO: Connect with requirements.
+        The same two facilitators didn't get to do a full test in the Mixed Reality version due to some technical difficulties. But both looked at the concept and a demo with the Hololens. The paragraphs below is a summary of what was said and discussed.
+        
+        The avatar for the Hololens was too big and intrusive. It is important that the facilitators doesn't take all the attention of the room, but rather acts as a fly on the wall. At least when you are observing. When you are about to give feedback, having a feature that temporarily makes you able to acquire the students attention would be nice. Like for example descending down into their world with a gesture or another in-game indicator that make them understand that you want their attention. It is important that this is comfortable for the students.
+        
+        The facilitators suggested that it would be nice to be able to write on the whiteboard while spectating as Hololens. By adding this feature the facilitator could explain both verbally and visually, and interact with what the students have written themselves. Especially useful for doing EiT exercises.
+        
+        Even less body language to observe in this version. The application had only avatars with a moving body and a rotating head. No indicator for speech and no hands for gesticulating.
+        
+        The facilitators also suggested adding the ability to import documents and write on them. This to be able to implement some EiT form exercises into the application. One way to do this is by implementing the ability to import images and draw on them. Making the user able to mark of on forms and saving the result for inspection by the facilitators.
+        
+        \subsection{Vive Application} % Summary of interview. Relevant to Vive application
+        % TODO: Connect with requirements.
+        Was tested by two facilitators. One with and one without the Vive headset which both had pros and cons. The following paragraphs is a summary of what were said and discussed in this interview.
+        
+        The VR lab enabled one facilitator to watch the Trondheim side of the collaboration via the screens in the room. This required a lot of concentration and ended up being tiresome. It felt a little like watching TV and thus he felt more distant than usual when trying to facilitate. Watching through the participants eyes he only got to see what they were looking at, and trying to follow 4 screens looking for collaborative elements was hard. Especially since the level of body language he could read were limited, although he could see 3 of the participants in the room with him, their faces where obscured by the Vive headset. The hardware and equipment also posed limitations, especially on the Gjøvik side, since they only had one phone acting as a microphone. This generated a lot of noise, making it somewhat hard to follow conversations. The threshold for giving feedback and suggestions were higher, since his presence were only heard and not seen. The students completed an EiT exercises name "take space, give space". 
+        
+        \com{More details here!}
+        
+        Due to technical and software limitations this took a lot more time in VR than in the real world. Making it more effort than gain. He also noted that using Skype or another VOIP application with a video feed might have been more efficient for this type of exercises, at leas for this version of the IVR-Collaboration.
+        
+        The other facilitator tried facilitating with the Vive headset and found that using VR can be uncomfortable and nauseating. For example when the headset picks up signals from the wrong base station, it will get confused and throw you around in the world. She also pointed out that it was hard to pick up on body language and was missing facial expressions, as these are signs she usually picks up on when facilitating in the real world. She also experienced that the VR world had a lot of unrelated stimuli. There is always something more interesting to look at, especially the first times you try it. And since the audio is only in their head, the visual stimuli might at times take more of your focus than intended. In other words, it might be harder to pay attention to what people are saying.
+        
+        Approximately 70\% of communication comes from body language. And the body language the EiT students used were very different from what the facilitators had observed outside of VR. The facilitators speculated that this could be due to another group dynamic when collaborating with Gjøvik in contrast to internally with each other. They also speculated that it could be due to the anonymity of the session. Especially when someone is talking and not referring to anything in the world, the students tended to look at their hands or pay attention to something else, at least visually. Another factor might be that this is an application that is part of a test project that the EiT students didn't choose to use themselves. It has a lot of bugs and technical difficulties so the facilitators speculated that this could give them an "get it over with" mentality and make them not take it seriously.
+        
+        Avatars and anonymity can be good for racial and gender bias, as neither of them are visually visible in the application. The facilitators agreed that keeping this feature could be good for inclusion and equality. But that it is still important to be able to distinguish between the different participants, and that name tags can be a good candidate for this. The facilitators also agreed that the avatars should match the purpose. For example do not use animals or crazy outfits for a normal meeting session.
+        
+        Long session in VR can be tiresome and induce nausea for many different reason. One thing the facilitators noted was that they found it strange that the students decided to stand during whole length of the meeting. This might be due to you not being able to see the chair beside you inside the VR world.
+        
+        \subsection{Requirements} % F1 - 5 partially fulfilled, F6 - 8 not fulfilled, F9 almost fulfilled.
+        Not all requirements were met for phase 2. Requirement F1, F2, F4 and F5 were partially met and F6 - F8 were not met at all. Requirement F9 was met, but lacked some specification that were added for phase 3, and requirement F3 was completely met. The rest of this section will briefly discuss the fulfillment of each requirement.
+        
+        For requirement F1 it was hard to determine if it was met or not. Requirement F1.1 and F1.2 were too unspecific and hard to understand what was actually required. Requirement F1.3 seems to have been met, since none of the test participants had any trouble navigating the environment. To test this case thoroughly, it would also be required to test the application with people less experienced with VR.
+        
+        The Avatar followed the player as describe in requirement F2.1, but did not have a separate avatar for Hololens as required by F2.2. This was due to F2.2 being of low priority when critical bugs were still present right before the test was conducted. Requirement F2 also lacked the specification for the two different avatars.
+        
+        The requirement F3 were met. The player can move around by walking in the real world as describe by F3.1 and teleport using a controller as describe by F3.2. The player is thus able to move around in the virtual space.
+        
+        Multiplayer was very unstable for phase 2, but the requirements were almost met anyways due to lacking specifications for stability and long levity. These specification had to be added in phase 3 for a correct measure of working multiplayer functionality. Aside from that the requirements F4.1, F4.2, F4.3 were all completely met through the implemented match maker. Requirement F4.4 were however not met due to the lack of a disconnect feature, apart from forcibly closing the application by external means.
+        
+        The Drawing functionality almost met the requirements specified in F5. Through a pen and a palette the player were able to draw on a surface (the whiteboard) as specified by F5.1 and choose a color by using the palette as required by F5.3. To be able to erase what had been drawn and thus fulfilling requirement F5.4, the player could select the color white, which was the same white as the whiteboard. Drawing in 3D as described by F5.2 was not fulfilled and was also set to a low priority for phase 3. The render method used for drawing also caused a lot of frame rate drops for Hololens, thus requirements regarding performance had to be added for phase 3.
+        
+        Requirement F6 - F8 were, as mention earlier, not fulfilled at all. Mostly because these were giving a lower priority than the rest of the requirements. Requirement F6 describes sharing media. This feature were implemented through image sharing with limited functionality, but were left out because it was difficult and complex to use, and due to the lack of a proper UI implementation. Requirement F7 described voice chat. The voice chat functionality were given a lower priority due to the expected problems with limited bandwidth through Unity's network service, and because using a third-party software was just as viable. Requirement F8 described intractable objects and were given a low priority due to the low impact it would have on the completed product.
+        
+        Requirement F9 were met for phase 2. The player was able to spectate the virtual space by using the Hololens, as well as move the collaboration space relative to the real world as specified by requirement F9.1 and F9.2. The collaboration space fit on a table as describe by requirement F9.3, but the interviews revealed that it was to small to follow what the immersed players were doing. Thus further specifications were needed for in phase 3.
+        
