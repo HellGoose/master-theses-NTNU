@@ -17,14 +17,30 @@ In this chapter we will give an introduction to background for our master thesis
     \end{figure}
     
     \subsubsection{Virtual Reality}
-    Virtual Reality(VR) is the concept of a virtual space where the user is fully immersed in a virtual world, usually through a Head Mounted Display(HMD). This means that the environment, and everything the user sees and interacts with is completely synthetic. The environment can emulate the real world and seem like reality, be it fiction or otherwise; or this virtual environment might be a world where our physical laws do not apply. On the virtuality continuum, as shown in Figure \ref{fig:virtualcontinuum}, this type of environment resides on the furthest extreme, opposite the real environment.
+    Using Milgram's and Kishinos's description of Virtual Reality(VR) from their paper.\cite{Milgram1994} VR is the concept of a virtual space where the user is fully immersed in a virtual world, usually through a Head Mounted Display(HMD). This means that the environment, and everything the user sees and interacts with is completely synthetic. The environment can emulate the real world and seem like reality, be it fiction or otherwise; or this virtual environment might be a world where our physical laws do not apply. On the virtuality continuum, as shown in Figure \ref{fig:virtualcontinuum}, this type of environment resides on the furthest extreme, opposite the real environment.
 
     \subsubsection{Augmented Reality}
     Augmented Reality(AR) is the concept of a real environment with digital elements superimposed, enhancing the users perception of reality.This is achieved by rendering these digital "\emph{holograms}"\cite{wdc-holo} on a transparent display which the user sees through(e.g. Microsoft's Hololens or Magic Leap. The same effect can also be achieved by superimposing the digital elements onto video captured by a camera in real-time.
     
     \subsubsection{Mixed Reality}
-    As shown in Figure \ref{fig:virtualcontinuum}, a Mixed Reality(MR) display can reside anywhere between the extremes of the virtuality continuum. 
-    % What is the latest tech and research
+    As shown in Figure \ref{fig:virtualcontinuum}, a Mixed Reality(MR) display can reside anywhere between the extremes of the virtuality continuum\cite{Milgram1994}. The technology has moved on since 1994, when the paper by Kishino and Milgram was published. \emph{"Since then, the application of mixed reality goes beyond displays but also includes environmental input, spatial sound, and location."}\cite{wdc-mr}
+    
+    Microsoft, especially, has expanded on the application of Mixed Reality. And in the article "What is mixed reality?"\cite{wdc-mr}. MR is described like this: \emph{"Most mobile phones on the market today have little to no environmental understanding capabilities. Thus the experiences they offer cannot mix between physical and digital realities. The experiences that overlay graphics on video streams of the physical world are augmented reality, and the experiences that occlude your view to present a digital experience are virtual reality. As you can see, the experiences enabled between these two extremes is mixed reality"}\cite{wdc-mr}. This spectrum is found in Figure \ref{fig:mrspectrum}
+    
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[scale=1]{figures/mixedrealityspectrum.png}
+        \caption{The Mixed Reality Spectrum\cite{wdc-mr}}
+        \label{fig:mrspectrum}
+    \end{figure}
+    
+    In Figure \ref{fig:mrdevicetypes} the two main device types that deliver Windows Mixed Reality is listed. These are: Holographic devices, which has the ability to place digital content in the real world;\cite{wdc-mr} and Immersive devices, which has the ability to hide the physical world and replace it with a digital experience.\cite{wdc-mr} 
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[scale=1]{figures/mixedrealityspectrumdevicetypes.png}
+        \caption{Mixed reality device types.\cite{wdc-mr}}
+        \label{fig:mrdevicetypes}
+    \end{figure}
 
 \section{Technology}
 % What technology are we using.
@@ -32,7 +48,9 @@ In this section we will cover the technology that made everything possible. This
 
     \subsection{Universal Windows Platform}
     % About UWP. What is it and why we use it
-    Universal Windows Platform (UWP) is a platform-homogeneous application architecture created by Microsoft and first introduced in Windows 10. The purpose of this software platform is to help develop universal apps that run on Windows 10, Windows 10 Mobile, Xbox One and Hololens without the need to be re-written for each. It supports Windows app development using C++, C\#, VB.NET, and XAML. The API is implemented in C++, and supported in C++, VB.NET, C\#, F\# and JavaScript. Designed as an extension to the Windows Runtime platform first introduced in Windows Server 2012 and Windows 8, UWP allows developers to create apps that will potentially run on multiple types of devices. %Wikipedia. Probably cite.
+    Universal Windows Platform (UWP) provides a common app platform on every device that runs Windows 10. 
+
+    A UWP app written in C++ /WinRT or C++ /CX has access to the Win32 APIs that are part of the UWP. These Win32 APIs are implemented by all Windows 10 devices.
     
     \subsection{Mixed Reality Toolkit}
     % What is it and why we use it
@@ -69,10 +87,14 @@ In this section we will cover the technology that made everything possible. This
     % Something about the vision and idea behind this initiative
     It's about connection Gløs, Draggis, Gjøvik og Ålesund through VR.
     Notes: NTNU merge, VR EiT village, Joint effort between Gjøvik and Trondheim, Idea to connect the campuses through VR, the idea is that, given the right tools, this should work better than using VOIP and video, its all about presence and the tools that can be given to you in a virtual world.
+    
+    \subsection{EiT VR Village}
+    A lot here, including course description, own experiences, interview with LAs!
 
     \subsection{IVR-Connection}
     % About this program and how it fits in with the vision and idea from 4C1R
     Program made by Niclas to test cooperation in VR.
     
-    \subsection{EiT VR Village}
-    A lot here, including course description, own experiences, interview with LAs!
+    \subsection{Personal Experience/Using IVR-Connection during EiT}
+    
+    
