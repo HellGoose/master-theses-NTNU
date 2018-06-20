@@ -9,7 +9,7 @@
 %% \documentclass[MACS,english,a4paper,oneside,12pt]{ntnuthesis/ntnuthesis}
 
 %% with the change to using DAIM we have a new option. include DAIM after english below removes the front page material so that you can then submit in the DAIM system. If you are wanting the front material remove DAIM and make sure you fill in the DaimData.tex file.
-\documentclass[MIT,english]{ntnuthesis/ntnuthesis}
+\documentclass[MIT, english, DAIM, b5paper, twoside]{ntnuthesis/ntnuthesis}
 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}     % For utf8 encoded .tex files allows norwegian characters in the files. This can be dangerous if you change to a differnt editor.
@@ -105,7 +105,7 @@
 
 \include{inc/1-introduction}
 \include{inc/2-background} % includes latex files from the same directory
-\include{inc/3-theory}
+%\include{inc/3-theory}
 \include{inc/4-methodology} % could be called Methodology or methods or any filename 
  % \include{inc/results} % could be results
 \include{inc/5-phase1}

@@ -1,22 +1,24 @@
 \chapter{Background}
     \label{chap:background}
-    In this chapter we will give an introduction to background for our master thesis as well as the tools, technology and previous research that made it all possible. 
 
     \section{EiT VR Village}
         \subsection{What is EiT?}
             Experts in Teamwork(EiT) is a compulsory subject for Master students at NTNU. There are about 80 villages, each with its unique village theme. The general theme for the villages are problem areas from society and working life. In each village, students are divided into groups and are to define their own project related to the village theme.\cite{EiTAbout}
             
-            The point of EiT is for students to develop interdisciplinary teamwork skills. By composing each EiT village of students from a wide range of disciplines, each student will learn how to work together in interdisciplinary groups. There is also a focus on reflection of one's own contribution in a team, and reflection on the team altogether.\cite{EiTAbout}
+            The point of EiT is for students to develop interdisciplinary teamwork skills. By composing each EiT village of students from a wide range of disciplines, each student will learn how to work together in interdisciplinary groups. There is also a focus on reflection of one's own contribution in a team, and reflection on the team as a whole.\cite{EiTAbout}
+            
+            To help the students in their reflection endeavours, EiT has employed teaching assistants to observe the students as they work. These facilitators are to help the groups by asking questions, and stating some of their observations to foster discussions and further introspection in the group. The facilitator is never to command, or directly give instructions to the group. 
         
         \subsection{VR/AR for learning and training}
-            This thesis has a strong connection to the EiT village "Virtual and Augmented Reality for Learning and Training". This village already had most of the required resources in place for the students to use, and the course description and goal of the village aligns with our motivation for exploring the possibilities in this field.
+            "Virtual and Augmented Reality for Learning and Training" is an EiT village led by Ekaterina Prasolova-Førland. On NTNU's page about the village it says (Translated to English): \emph{"In this village we are going to explore innovative solutions for collaboration in VR/AR with our sister-village at NTNU-Gjøvik (led by Simon McCallum). Some of the groups will therefor have the opportunity to collaborate on their projects with the Gjøvik-students in a virtual arena with HTC Vive and Hololens. The group projects can also be done in collaboration with a selection of local businesses and international actors."}
             
-            On NTNU's page about the village (Translated to English): \emph{"Virtual and augmented reality (VR/AR) have had an explosive development the last years. This opens up big opportunities in an educational context. For example, safely and easily experience highly realistic educational situations that is not easily accessible in real life, like exploring the seafloor, burning buildings, or war zones. With this technology the students get access to visualizations and simulations that can contribute to a better understanding of syllabus and to better acquiring of skills, e.g. in a virtual lab or operation room.}
-            
-            \emph{Virtual reality also opens up new opportunities for remote education were students can work together in a virtual hospital or cooperate with students at NTNU Gjøvik and Ålesund. There are being developed games like Pokemon GO to give an introduction to local history. VR/AR can be used in adult education for everything from emergency response training and training of neurosurgeons to work training under direction from NAV. Virtual reality is also used for therapy and medical treatment, e.g. for mental and physical training and stimuli, for disabled people and the elderly."} \cite{EiTVRLandsby}
+            This master thesis is written in collaboration with this village. It is through this village that we have gotten access to authentic users, and resources like hardware and lab space.
         
     \section{NTNU Dragvoll VR Lab}
-
+        The VR lab at Dragvoll started out as a small repurposed office room at the department of "Education and Lifelong Learning". The space contained two computers, each connected with a HTC Vive. The Vives shared the same spatial area only divided by a digitally defined split of the room. In other words the lab was cramped and didn't support many concurrent users.
+        
+        In the beginning of January 2018, the lab was moved to a repurposed computer lab completely renovated to serve the purpose of a modern VR lab. At the time of writing this thesis, it contains 4 semi-separated booths, 5 VR ready computers, 4 HTC Vive setups, 3 Windows Mixed Reality headsets, one Oculus Rift, and 3 Hololenses. With all this new technology operating simultaneously in the same space, there were some unforeseen issues. These issues are addressed in section \ref{sec:vrlabfixes}.
+        
     \section{Concepts}
     
         \subsection{Virtuality Continuum}
@@ -29,10 +31,10 @@
             \end{figure}
         
         \subsubsection{Virtual Reality}
-            Using Milgram's and Kishinos's description of Virtual Reality(VR) from their paper.\cite{Milgram1994} VR is the concept of a virtual space where the user is fully immersed in a virtual world, usually through a Head Mounted Display(HMD). This means that the environment, and everything the user sees and interacts with is completely synthetic. The environment can emulate the real world and seem like reality, be it fiction or otherwise; or this Virtual Environment(VE) might be a world where our physical laws do not apply. On the virtuality continuum, as shown in Figure \ref{fig:virtualcontinuum}, this type of environment resides on the furthest extreme, opposite the real environment.
+            Milgram's and Kishinos's description of Virtual Reality(VR) from their paper\cite{Milgram1994}. VR is the concept of a virtual space where the user is fully immersed in a virtual world, usually through a Head Mounted Display(HMD). This means that the environment, and everything the user sees and interacts with is completely synthetic. The environment can emulate the real world and seem like reality, be it fiction or otherwise; or this Virtual Environment(VE) might be a world where our physical laws do not apply. On the virtuality continuum, as shown in Figure \ref{fig:virtualcontinuum}, this type of environment resides on the furthest extreme, opposite the real environment.
     
         \subsubsection{Augmented Reality}
-            Augmented Reality(AR) is the concept of a real environment with digital elements superimposed, enhancing the users perception of reality.\cite{Milgram1994} This is achieved by rendering these digital "\emph{holograms}" on a transparent display which the user sees through(e.g. Microsoft's Hololens\cite{hololens} or Magic Leap\cite{magicleap}. The same effect can also be achieved by superimposing the digital elements onto video captured by a camera in real-time.
+            Augmented Reality(AR) is the concept of a real environment with digital elements superimposed, enhancing the users perception of reality\cite{Milgram1994}. This is achieved by rendering these digital "\emph{holograms}" on a transparent display which the user sees through(e.g. Microsoft's Hololens\cite{hololens} or Magic Leap\cite{magicleap}. The same effect can also be achieved by superimposing the digital elements onto video captured by a camera in real-time.
         
         \subsubsection{Mixed Reality}
             As shown in Figure \ref{fig:virtualcontinuum}, a Mixed Reality(MR) display can reside anywhere between the extremes of the virtuality continuum\cite{Milgram1994}. The technology has moved on since 1994, when the paper by Kishino and Milgram was published. \emph{"Since then, the application of mixed reality goes beyond displays but also includes environmental input, spatial sound, and location."}\cite{wdc-mr}
@@ -41,32 +43,31 @@
             
             \begin{figure}[!ht]
                 \centering
-                \includegraphics[scale=1]{figures/mixedrealityspectrum.png}
+                \includegraphics[scale=.85]{figures/mixedrealityspectrum.png}
                 \caption{The Mixed Reality Spectrum\cite{wdc-mr}}
                 \label{fig:mrspectrum}
             \end{figure}
             
-            In Figure \ref{fig:mrdevicetypes} the two main device types that deliver Windows Mixed Reality is listed. These are: Holographic devices, which has the ability to place digital content in the real world;\cite{wdc-mr} and Immersive devices, which has the ability to hide the physical world and replace it with a digital experience.\cite{wdc-mr} 
+            In Figure \ref{fig:mrdevicetypes} the two main device types that deliver Windows Mixed Reality is listed. These are: Holographic devices, which has the ability to place digital content in the real world\cite{wdc-mr}; and Immersive devices, which has the ability to hide the physical world and replace it with a digital experience.\cite{wdc-mr} 
+            
             \begin{figure}[!ht]
                 \centering
-                \includegraphics[scale=1]{figures/mixedrealityspectrumdevicetypes.png}
+                \includegraphics[scale=.85]{figures/mixedrealityspectrumdevicetypes.png}
                 \caption{Mixed reality device types.\cite{wdc-mr}}
                 \label{fig:mrdevicetypes}
             \end{figure}
             
         \subsection{Holograms}
-        
-        \subsection{Collaboration}
+            Holograms are \emph{"objects made of light and sound that appear in the world around you, just as if they were real objects."} \cite{wdc-holo} Basically they are the digital objects the user of the Hololens sees and interacts with. The objects can be placed anywhere in the room, and responds to gaze, gestures and voice commands. In our application, the hologram the user will experience, is a live version of the virtual world where the users of the immersive headsets are collaborating in. This world is scaled down to fit the table or floor.
             
-            Collaboration is by Rochelle and Teasley, defined as \emph{"a coordinated, synchronous activity that is the result of a continued attempt to construct and maintain a shared conception of a problem."}\cite{Roschelle1995}. In their paper they further distinguish 'Collaborative' problem solving and 'Cooperative' problem solving. The latter divides work between the participants, whilst the former is a mutual engagement where the participants make a coordinated effort to solve a problem together. \cite{Roschelle1995}
+        \subsection{Collaboration}
+            Collaboration is by Rochelle and Teasley, defined as \emph{"a coordinated, synchronous activity that is the result of a continued attempt to construct and maintain a shared conception of a problem."}\cite{Roschelle1995}. In their paper they further distinguish 'Collaborative' problem solving and 'Cooperative' problem solving. The latter divides work between the participants, whilst the former is a mutual engagement where the participants make a coordinated effort to solve a problem together. \cite{Roschelle1995} 
             
         \subsection{Immersion} % Research and definition of what immersion means in the context of VR
             Immersion in relation to computer games is "used to describe the degree of involvement with a game" \cite{Brown2004}. In the paper by Brown in 2014 he defines three different levels of immersion: Engagement, engrossment and total immersion. Each level has its own barriers that needs to be removed for that level of immersion to be possible. Entering a higher level of immersion is correlated with having a higher level of concentration and focus \cite{Jennett2008}. For IVR-Connection this is one of the concepts that can give the user an advantage over collaborating in "real life".
         
         \subsection{Presence} % Research and definition of what presence means in the context of VR
-            Jennet et al. presents two different perspectives on the definition of presence \cite{Jennett2008}. The first has basis in the rationalistic tradition, and defines presence as a psychological sense of being in a virtual environment \cite{Slater1994}. With this perspective the level of presence has to be evaluated through user feedback. The other bases itself on the Heideggerian/Gibsonian metaphysics, and relates presence to the ability of "successfully supported action in the environment" \cite{Zahorik1998}. With this perspective presence can be evaluated through empirical means. Presence and immersion have a lot in common and are often used interchangeably. However, Jennet et al. argues that presence is a state of mind, while immersion is an experience in time \cite{Jennett2008}. With this distinction presence and immersion are allowed to overlap, but it is also possible to have one without the other.
-            
-            \todo{Explain "Ready-In-Hand" and "throwness". This relates to what presence means for mixed reality}
+            Jennet et al. presents two different perspectives on the definition of presence \cite{Jennett2008}. The first has basis in the rationalistic tradition, and defines presence as a psychological sense of being in a virtual environment \cite{Slater1994}. With this perspective the level of presence has to be evaluated through user feedback. The other bases itself on the Heideggerian/Gibsonian metaphysics, and relates presence to the ability of "successfully supported action in the environment" \cite{Zahorik1998}. With this perspective presence can be evaluated through empirical means. Presence and immersion have a lot in common and are often used interchangeably. However, Jennet et al. argues that presence is a state of mind, while immersion is an experience in time \cite{Jennett2008}. With this distinction presence and immersion are allowed to overlap, but it is also possible to have one without the other. For example, a user can fit the definition of being immersed while playing Tetris, but it would be hard to imagine the user feeling present in the Tetris world of falling blocks. \cite{Jennett2008}
     
     \section{Technology}
     % What technology are we using.
@@ -95,10 +96,38 @@
             Under the Mixed Reality Moniker, the Immersive Headsets are VR headsets that uses built-in inside-out tracking. With no need for external sensors, and only one cable for connection with the PC; One can enjoy VR from anywhere. Headsets are provided by multiple different big name retailers, all providing their own designs and solutions for the platform.
     
     \section{Related Work}
+        Microsoft's MR technology is very new, for this reason there is not a lot of research and exploration on different uses of the technology. There are some collaboration oriented applications made for VR and AR platforms, VR especially has had some progress in this area. First we will introduce some technology and research that has been instrumental in the development of the Unity version of IVR-Connection.
         
-        \subsection{IVR-Connection}
-            The Unreal version of IVR-Connection's main goal is to provide a VE to facilitate collaboration. Since we had to remake IVR-Connection in Unity, we still wished to provide the same environment, albeit our thesis is focused on the facilitator spectating we originally wanted to add.
+        
+        \subsection{The Unreal version of IVR-Connection}
+            The Unreal version of IVR-Connection's main goal is to provide a Virtual Environment to facilitate collaboration. This application is a result of the master thesis \emph{Virtual Reality Collaboration: Using current virtual reality technology for long distance collaboration and meetings} by Nicklas Løkkeberg Nilsen. \cite{nilsen2017} It has since been worked on by bachelor and EiT students. It implements features for drawing on a whiteboard, image sharing, 360 video viewing, a prototype for sharing 3D models, and a prototype for simulating laser physics. Since we had to remake IVR-Connection in Unity, we still wished to provide a similar collaborative environment, albeit our thesis is focused on the facilitator spectating we originally wanted to add.
         
         \subsection{Virtual Reality Spectating}
+            In the master thesis \emph{Virtual Reality Spectating}, by Jan Greger Hemb, a discussion on virtual reality spectating is conducted. Hemb builds on IVR-Connection and tries to add different forms of spectating to see which one the users prefer. His results found that virtual reality was the preferred way to spectate virtual reality, and that having freedom of movement was preferred to being limited. \cite{hemb2017}
+            
+        \subsection{MR Sharing 250}
+            MR Sharing 250 is a tutorial from Microsoft showcasing the possibility for combining the virtual reality of immersed headsets with the augmented reality of Hololens. \cite{wdc-mr250} It contains the models and code for a small virtual environment, were the immersed headset users can solve puzzles in the environment and the Hololens users can observe them. 
+            
+            When developing the Unity version of IVR-Connection this tutorial was a part of the resources used. It was however not as useful as we thought it to be when we first discovered it. This tutorial and its resources had aged badly and did not support the newest updates from the Mixed Reality Toolkit and Unity. It was however possible to transfer the models and parts of the code, that with a little bit of modification gave us shortcuts to some common features. The player models were taken directly from the tutorial.
         
-        \subsection{Medical Procedural Training in Virtual Reality}
+        \subsubsection{Augmented Reality Visualizations}
+            In a recent study done by at Delft University of Technology about different ways of visualizing Augmented Reality, there was \emph{"[...] significant indications that the use of a ‘god-mode’ perspective for the remote expert provides the best situation awareness [...]"} \cite{aschenbrenner2018}. In this context 'god mode' perspective refers to observing miniaturized versions of the virtual objects. In our solution this type of perspective is used to give the facilitator a good overview over the the virtual environment.
+
+            
+        \subsection{Other uses of VR/AR/MR for collaboration}
+            Listed below are some of the examples of applications for collaboration that actively uses virtual, augmented, or mixed reality as its primary medium.
+            
+            \subsubsection{Medical Training in Virtual Reality}
+                In the master thesis \emph{Medical Procedural Training in Virtual Reality}, by Tarald Gåsbakk and Håvard Snarby, produced an application that could help train and engage medical students \cite{gaasbakk2017}. A similar application was made using Second Life in \emph{"Practicing Interprofessional Team Communication and Collaboration in a Smart Virtual University Hospital"} \cite{Prasolova-Forland2018}
+
+            \subsubsection{Masters of Pi}
+                Master of Pi is a project that aims to redefine Product Lifecycle Management software by using VR technology. They want to do this by providing a collaborative, interactive digital space in which engineers can work across disciplines. This can reduce cost and complexity associated with constant refactoring of CAD data. \cite{mastersofpi}
+            
+            \subsubsection{CocoVerse}    
+                CocoVerse\cite{Greenwald2017} is an application quite similar to the original IVR-Connection, both have the same idea of providing a virtual environment for collaboration. CocoVerse provides a way for users to \emph{"[...] sketch volumetric surfaces in 3D with a
+                virtual paintbrush; create and manipulate objects; capture images with a camera, and place them as pictures; and
+                write phrases using a speech-to-text system."}
+            
+            \subsubsection{check jabref}
+    \section{Theory}
+        \input{inc/3-theory.tex}

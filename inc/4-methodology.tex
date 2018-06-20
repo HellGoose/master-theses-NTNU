@@ -1,28 +1,60 @@
 \chapter{Methodology}
-This chapter will contain the research questions and the description of the methods used to develop and evaluate the application.
-
-    \section{Research Questions}
-    These questions aim to explore the possibilities of using Hololens and mixed reality for collaborative learning and facilitating in the context of project-based learning. With a focus on how mixed reality supports collaborative learning and how it compares to traditional VR.  % What to write?
+    \label{chapter:methodology}
+    In this chapter we will outline the process and methodology used in this master thesis.
     
-    \begin{center}
-        \begin{tabular}{ p{1cm} p{1.2cm} p{10cm} }
-            \textbf{\large{RQ1}} & \multicolumn{2}{ p{13cm} }{How to use mixed- and virtual reality to support and facilitate collaborative learning in the context of EiT?} \\
-            \\
-             & \textbf{RQ1.1} & How to use virtual reality to support and facilitate collaborative learning in the context of EiT? \\
-             & \textbf{RQ1.2} & How to use mixed reality to support and facilitate collaborative learning  in the context of EiT? \\
-             & \textbf{RQ1.3} & What are the advantages and disadvantages for both approaches? \\
-            \\
-            \textbf{\large{RQ2}} & \multicolumn{2}{ p{13cm} }{Can our solution be used in other experience-based learning scenarios outside EiT?} \\
-        \end{tabular}
-    \end{center}
+    \section{Research Methodology}
+        Our research method is based on gathering and formulating research questions. To answer these questions we employed both qualitative methods in the form of focus groups, and quantitative methods in the form of questionnaires.
+        
+        \subsection{Research Questions}
+            Gathering and formulating the research questions was done based on conversations with our supervisors, existing theory and personal experiences with the topic. These questions started out broad, but through experiences and further exploration in the topics of collaboration, collaborative learning, EiT, and the concept of mixed reality. The questions became more refined and focused on what we really wanted to answer.
+            
+            The final questions aim to combine augmented- and virtual reality to explore the possibilities of using Hololens to support and facilitate collaborative learning in the context of EiT. With an added focus on how mixed reality compares to traditional VR, and if the results gathered can be applied outside of EiT.
+        
+        \begin{center}
+            \begin{tabular}{ p{1cm} p{1.2cm} p{7cm} }
+                \textbf{\large{RQ1}} & \multicolumn{2}{ p{10cm} }{How to use mixed- and virtual reality to support and facilitate collaborative learning in the context of EiT?} \\
+                \\
+                 & \textbf{RQ1.1} & How to use virtual reality to support and facilitate collaborative learning in the context of EiT? \\
+                 & \textbf{RQ1.2} & How to use mixed reality to support and facilitate collaborative learning  in the context of EiT? \\
+                 & \textbf{RQ1.3} & What are the advantages and disadvantages of both approaches? \\
+                \\
+                \textbf{\large{RQ2}} & \multicolumn{2}{ p{10cm} }{Can our solution be used in other experience-based learning scenarios outside EiT?} \\
+            \end{tabular}
+        \end{center}
+        
+            
+            \subsection{Focus Groups}
+            The results of this project were mainly evaluated through the qualitative method of focus groups. The focus groups were conducted in a semi-structured manner, and the guiding questions were rooted in the field of usability testing. The participants were facilitators and master students with experience in the field of VR/AR.
+            
+            \subsection{Questionnaire}
+            Questionnaires were conducted through Google Forms. The data was mostly gathered from EiT students that were working with the Unreal version of IVR-Connection, and focused on comparing student satisfaction and experiences with the two different applications. The questionnaire was based on an earlier questionnaire given to the EiT students of 2017, for the evaluation of using IVR-Connection in the course. Some of the data gathered were also to be compared to the data gathered about the Unreal Version of IVR-Connection, as it had been heavily improved upon. \todo{Mention whether or not we actually do compare Nicklas' Data with the new data} %\cite{Nilsen2017}
 
 
-    \section{Software Development} % Describe how we implemented it. Requirements + survey + exploration + reevaluation.
-    an iterative software development approach (consisting of X phases, each of which included Req-design- implementation-evaluation)
-    
-    \section{Software Evaluation} % Describe how we tested and evaluated the software. Relation to requirements + internal evaluation + user tests + focus groups + survey
-    This section will contain a description of what methods were used for evaluating the application. Might be merged with the Software Development section.
-
-
-% Evaluation qualitative + quantitative
-% Could also mention Design-based research: http://edutechwiki.unige.ch/en/Design-based_research
+    \section{Software Development Process}
+        \subsection{Agile Software Development}
+            The application were developed with an agile approach. It consisted of 3 main phases, each of which included several iterations. Each phase were conducted in the following order: Defining the backlog and then iterating repeatedly through feature design, implementation, and evaluation. Working with an iterative, agile approach let us adapt more easily to new discoveries. Which matched well with the exploratory nature of this project. Following are the main practices of agile development we subscribed to during this project:
+            
+            \subsubsection{Requirement Document}
+            
+            \subsubsection{Incremental Development}
+                At the end of each phase we made sure to have a usable version of the application, and that each new phase gave rise to new user visible functionality.
+        
+            \subsubsection{User Testing}
+                At the end of each phase a larger scale evaluation were carried out with real users. These user tests consisted of the users trying out application with or without specific instruction. Specific instruction were only used when then application was mature enough to evaluate facilitation of a collaborative scenario. Testing with real users enabled us to get relevant feedback.
+                
+            \subsubsection{Unit Testing}
+                Unit tests were used to quickly test the expected output of functionality within the program. This was important to speed up the progression due to the long build time associated with building applications for Hololens.
+                
+            \subsubsection{Version Control}
+                Version control were handled through Unity Collaboration. With Unity Collaboration it was easy to follow what files the other person were working on at any given time. This was due to visual indicators next to the relevant files within the Unity editor itself. In addition Unity Collaboration offers specific tools for merging Unity's binary files, something most other version control solutions can't do.
+            
+            \subsubsection{Pair Programming}
+                Pair programming was used to ensure quality in critical areas of the code. It also helped speed up progression when we got stuck with our individual tasks.
+                
+            \subsubsection{Backlog}
+                A backlog was used to keep track of the essential features of the application. We used the backlog as a reference for what the applications would be expected to contain at a finished stage. This allowed us to not lose sight of the finished product.
+                
+            \subsubsection{Task Board}
+                A task board was established for each phase. It was populated with the essential features from the backlog estimated to be finished within the phase. The task board was sketched using Google Docs\cite{gdocs} and visualized using Trello\cite{trello}, and was updated after each meeting. Having a task board helped us to gain a continuous overview of the progress within a phase.
+                
+            

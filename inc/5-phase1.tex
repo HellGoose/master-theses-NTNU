@@ -1,4 +1,5 @@
 \chapter{Phase 1}
+    \label{chapter:phase1}
     \section{Exploration}
     In the beginning of the first phase time was spent looking for ways to integrate Hololens into the already existing IVR-Connection application. To accomplish this, we had to look at the code of IVR-Connection and browse online for already existing solutions for Hololens in Unreal.
     
@@ -10,7 +11,7 @@
         \subsection{Hololens Support}
         The best way to support Hololens, is to support UWP. Unreal engine did not natively support UWP at the time, but Microsoft were working on a branch of Unreal that did. This branch also had a sub branch called dev\_MixedReality which added support for Windows Mixed Reality. In addition there was a plugin called ProteusVR that added templates and blueprints for Hololens to this branch. ProteusVR had just reached version 1.0 and the lead developer promised to rapidly release updates as Windows' mixed reality branch evolved. The mixed reality sub branch did however not support Unreal engine 4.18 at the time. Since the priority for IVR-Connection was to support HTC Vive and be on the cutting edge of VR features, updating to Unreal engine 4.18 got prioritized over merging to the new Microsoft branch. In addition both the Microsoft branch and ProteusVR were both actively being developed. This meant that there was a chance for them both to catch up with 4.18 while we worked on the stable baseline for IVR-Connection. Thus Hololens support was set on hold until IVR-Connection 1.0 was finished.
         
-        \subsection{VR Lab Space}
+        \subsection{VR Lab Space} \label{sec:vrlabfixes}
         
         \com{Connect this to EiT learning goals (several students in VR together!)}
         Early January, the VR lab at NTNU Dragvoll finished construction. The lab consisted of four Vive headsets in different booths in the same room, each with its own set of base stations. The VR booths had an open design: With one of the side open and openings at the top of the walls. This caused the the base stations' infrared light to bleed into the adjacent booths. This introduced issues with the spatial tracking for some of the Vive headsets. Several solutions were applied to fix this issue: 
